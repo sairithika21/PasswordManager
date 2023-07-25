@@ -11,6 +11,7 @@ use App\Http\Controllers\DevicesandlocationController;
 use App\Http\Controllers\RandomController;
 use App\Http\Controllers\EmailController;
 use App\Http\Controllers\WebsiteController;
+use App\Http\Controllers\MasterPasswordController;
 
 
 /*
@@ -55,6 +56,14 @@ Route::prefix('v1')->group(function (){
 				Route::patch('',[PasswordController::class,'update']);
 				Route::get('',[PasswordController::class,'get']);
 				Route::get('{id}',[PasswordController::class,'getById']);
+		});
+
+			// Master password
+			Route::prefix('masterpassword')->group(function (){
+				Route::post('',[MasterPasswordController::class,'create']);
+				Route::delete('',[MasterPasswordController::class, 'delete']);
+				Route::patch('',[MasterPasswordController::class,'update']);
+				Route::get('',[MasterPasswordController::class,'get']);
 		});
 	});
 
