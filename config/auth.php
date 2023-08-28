@@ -18,6 +18,10 @@ return [
         'passwords' => 'users',
     ],
 
+    'user' => [
+        'concurrent_logins' => env('CONCURRENT_LOGINS', 3),
+    ],
+
     /*
     |--------------------------------------------------------------------------
     | Authentication Guards

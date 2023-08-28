@@ -8,6 +8,9 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
@@ -47,7 +50,17 @@ class User extends Authenticatable
      *
      * @var array<string, string>
      */
-    protected $casts = [
+    protected $casts = [ 
         'email_verified_at' => 'datetime',
     ];
+
+    //Relations 
+
+    public function emails(){
+        return $this->hasMany(UserEmail::class);
+    }
+
+     public function mobileNumbers(){
+        return $this->hasMany(UserMobileNumber::class);
+    }   
 }
